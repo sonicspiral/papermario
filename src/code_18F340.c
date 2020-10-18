@@ -4,7 +4,27 @@ INCLUDE_ASM(s32, "code_18F340", func_80260A60);
 
 INCLUDE_ASM(s32, "code_18F340", func_80260AD4);
 
-INCLUDE_ASM(s32, "code_18F340", activate_defend_command);
+// INCLUDE_ASM(s32, "code_18F340", activate_defend_command);
+u32 activate_defend_command(void) {
+    Actor* temp_s1 = gBattleStatus.playerActor->partsTable;
+    deduct_current_move_fp();
+    gBattleStatus.flags1 = (s32) (gBattleStatus.flags1 | 0x400000);
+    // temp_s1->unk94 = 0x802832D4;
+    set_animation(0, 0, 0x10014);
+    return 2;
+}
+/*
+? activate_defend_command(void) {
+    void *temp_s1;
+
+    temp_s1 = gBattleStatus.unkD8->unk1F4;
+    deduct_current_move_fp();
+    gBattleStatus.unk0 = (s32) (gBattleStatus.unk0 | 0x400000);
+    temp_s1->unk94 = 0x802832D4;
+    set_animation(0, 0, 0x10014);
+    return 2;
+}
+*/
 
 INCLUDE_ASM(s32, "code_18F340", func_80260B70);
 
